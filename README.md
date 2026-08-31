@@ -33,12 +33,17 @@ $ ls /app/bin (bundled with this flatpak)
 ```
 
 ## Running GUI app from IDE
-By default, java uses X11 but not exist inside Flatpak there is only Wayland.
+By default, Java uses X11.
+If your session is running under Wayland.
 You need to switch to Wayland toolkit for your app.
 Go to `Edit Configuration`, `Modify options` and enable `Add VM Options`.
 On the new box named `VM Options` add:
 
 `-Dawt.toolkit.name=WLToolkit`
+
+Or use X11 via XWayland if enabled by your compositor:
+
+`flatpak override --user com.jetbrains.IntelliJ-IDEA-Ultimate --socket=x11`
 
 ## Flatpak extensions
 To get support for additional languages, you have to install SDK extensions, e.g.
